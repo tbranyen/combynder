@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Index</title>
+</head>
+<body>
+  <main></main>
+
+  <script id="mainTemplate" type="template">
+    Enter a message: <input data-bind="msg" class="input" type="text">
+    <h3>
+      <div class="message">The message is: {{{ msg }}}</div>
+    </h3>
+  </script>
+
+  <script src="./observe.js"></script>
+  <script src="./combyne.js"></script>
+  <script src="./combynder.js"></script>
+
+  <script>
+    // The object to bind.
+    var obj = { msg: "Test" }; 
+    // Load in the template and bind the object.
+    var tmpl = combyne(mainTemplate.innerHTML, obj);
+
+    // Bind the template to an output region.  This will render the template
+    // with the initial data.  It will continue to track properties and 
+    // data-bind regions.
+    tmpl.bind(document.querySelector("main"));
+  </script>
+</body>
+</html>
